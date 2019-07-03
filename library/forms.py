@@ -1,9 +1,17 @@
 from django import forms
 from .models import Book
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
+
+
+class UserCreateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name')
+
 
 class BookCreateForm(forms.ModelForm):
     class Meta:

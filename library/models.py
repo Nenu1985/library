@@ -28,4 +28,4 @@ class Book(models.Model):
         super(Book, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('library:book-detail', args=[self.id, self.slug])
+        return reverse('library:book-update', args=[self.id, self.slug])

@@ -27,13 +27,8 @@ p {
     line-height: 1.8;
 }
 
-a {
-    color:#12c064;
-    text-decoration:none;
-}
-
 a:hover {
-    color:#00a74f;
+    color: #0f3aa7;
 }
 
 h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; }

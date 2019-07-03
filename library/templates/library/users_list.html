@@ -4,27 +4,31 @@
     Users
 {% endblock %}
 {% block content %}
-{% if request.user.is_authenticated %}
-<h2> Приветсвуем, {{ request.user.username }}!</h2>
-    <a href="{% url 'logout' %}">Logout</a>
+    {% if request.user.is_authenticated %}
+        <h2> Приветсвуем, {{ request.user.username }}!</h2>
+        <a href="{% url 'logout' %}">Logout</a>
     {% else %}
-    <h2> Вы не авторизованы </h2>
-    <a href="{% url 'login' %}">Login</a>
-{% endif %}
-
+        <h2> Вы не авторизованы </h2>
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    <hr>
+    <h2>Пользователи библиотеки:</h2>
     {% for user in users %}
-        {{ user.username }} <br>
+
+        <a href="{% url 'library:user-detail' user.username %}">{{ user.username }}</a><br>
     {% endfor %}
 
 
-<form method="post" enctype="multipart/form-data">
-{#    <form action="{% url 'library:books-list' %}" method="post">#}
-    {% csrf_token %}
-    <table>{{ form.as_table }}</table>
-{#    {{ form.as_p }}#}
+    <hr>
+    <h2>Добавить нового пользователя:</h2>
+    <form method="post" enctype="multipart/form-data">
+        {#    <form action="{% url 'library:books-list' %}" method="post">#}
+        {% csrf_token %}
+        <table>{{ form.as_table }}</table>
+        {#    {{ form.as_p }}#}
 
-    <input type="submit" value="Create">
+        <input type="submit" value="Create">
 
-</form>
+    </form>
 
 {% endblock %}
