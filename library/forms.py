@@ -22,13 +22,13 @@ class BookCreateForm(forms.ModelForm):
 
     def clean(self):
         self.cleaned_data = super().clean()
-        is_same_book_exists = Book.objects.filter(slug=slugify(self.cleaned_data['title']),
+        is_same_book_exists = Book.objects.filter(user=self.instance.user,
+                                                  slug=slugify(self.cleaned_data['title']),
                                                   author=self.cleaned_data['author'],
                                                   published_year=self.cleaned_data['published_year'],
                                                   )
         if is_same_book_exists:
-            raise forms.ValidationError('A book with the same parameters '
-                                        'already exists in the database!')
+            raise forms.ValidationError('User already has this book!')
 
     def save(self, force_insert=False,
              force_update=False,
