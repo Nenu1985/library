@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
-
+from django.urls import reverse_lazy
+from django.utils import timezone
 
 # Create your models here.
 class Book(models.Model):
@@ -15,6 +16,7 @@ class Book(models.Model):
     poster = models.ImageField(upload_to='books/%Y/%m/%d/')
     slug = models.SlugField(max_length=60, blank=True)
     description = models.TextField(blank=True)
+    published_year = models.IntegerField(default=timezone.now().year)
     created = models.DateField(auto_now_add=True, db_index=True)
 
     def __str__(self):
@@ -26,4 +28,4 @@ class Book(models.Model):
         super(Book, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('library:book-detail', args=[self.id])
+        return reverse('library:book-detail', args=[self.id, self.slug])
