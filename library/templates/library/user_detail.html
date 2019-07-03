@@ -4,12 +4,56 @@
 {% endblock %}
 
 {% block content %}
+    {% load thumbnail %}
+    <p>
+        Вы зашли в карточку пользователя: <br>
+        {% if  user.first_name %}
+            {{ user.first_name }} {{ user.last_name }}
+        {% else %} Имя не указано
+        {% endif %}
+
+    <hr>
+
+    </p>
     {% with books=user.books.all %}
-        {% for book in books %}
+        <h2>У пользователя {{ user.username }} {{ books.count }} книг:</h2>
+        <div class="container-fluid">
+            <div class="row" style="background-color: #0ac33e">
+                <div class="col-sm-4 content">Image</div>
+                <div class="col-sm-2 content">Title</div>
+                <div class="col-sm-2 content">Published</div>
+                <div class="col-sm-4 content">Description</div>
+            </div>
+            {% for book in books %}
 
-            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a><br>
-        {% endfor %}
+                <div class="row" style="margin-top: 10px">
+                    <div class="col-sm-4 content">
+                        <a href="{{ book.get_absolute_url }}">
+                            {% thumbnail book.poster "150x150" crop="100%" as b %}
+                                <a href="{{ book.get_absolute_url }}">
+                                    <img src="{{ b.url }}">
+                                </a>
+                            {% endthumbnail %}
+                        </a>
 
+                    </div>
+                    <div class="col-sm-2 content">
+                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a><br>
+                        <br>
+
+                    </div>
+                <div class="col-sm-2 content">
+
+                        Published: {{ book.published_year }}
+                    </div>
+                    <div class="col-sm-4 content">
+                        {{ book.description |truncatewords:10|linebreaks }}
+
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% endwith %}
     <hr>
     <h2>Добавить книгу пользователю {{ user.username }}:</h2>
@@ -19,7 +63,7 @@
         <table>{{ form.as_table }}</table>
         {#    {{ form.as_p }}#}
 
-        <input type="submit" value="Update">
+        <input type="submit" value="Добавить книгу">
 
     </form>
 {% endblock %}

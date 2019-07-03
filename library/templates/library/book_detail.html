@@ -3,7 +3,7 @@
     {{ book.title }}
 {% endblock %}
 {% block content %}
-
+<h2>Форма редактирования книги:</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table>

@@ -33,6 +33,7 @@ class BookCreateForm(forms.ModelForm):
     def save(self, force_insert=False,
              force_update=False,
              commit=True):
+
         book = super(BookCreateForm, self).save(commit=False)
 
         if commit:

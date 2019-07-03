@@ -12,11 +12,21 @@
         <a href="{% url 'login' %}">Login</a>
     {% endif %}
     <hr>
-    <h2>Пользователи библиотеки:</h2>
-    {% for user in users %}
+    <div class="container-fluid">
+        <h2>Пользователи библиотеки:</h2>
+        {% for user in users %}
+            <div class="row">
+                <div class="col-sm-4 content">
+                    <a href="{% url 'library:user-detail' user.username %}">{{ user.username }}</a>
+                </div>
+                <div class="col-sm-8 content">
+                    Количество книг: {{ user.books.count }}
+                </div>
 
-        <a href="{% url 'library:user-detail' user.username %}">{{ user.username }}</a><br>
-    {% endfor %}
+            </div>
+
+        {% endfor %}
+    </div>
 
 
     <hr>

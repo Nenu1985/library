@@ -55,11 +55,11 @@ class UserDetailView(View):
         form.instance.user = user
         if form.is_valid():
             book = form.save()
-            user.books.add(book)
+            if book:
+                user.books.add(book)
+        return HttpResponseRedirect(reverse_lazy('library:user-detail',
+                                                 kwargs={'username': user.username}))
 
-        return render(request, 'library/user_detail.html',
-                      {'user': user,
-                       'form': form, })
 
 
 class BookListView(ListView):
