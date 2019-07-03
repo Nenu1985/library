@@ -18,7 +18,7 @@ $ pip install -r requirements.txt
 $ createdb library
 
 $ python manage.py migrate
-$ python manage.py collectstatic
+$ python manage.py loaddata db.json
 ```
 
 ## dump data
