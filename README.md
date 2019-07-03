@@ -21,3 +21,8 @@ $ python manage.py migrate
 $ python manage.py collectstatic
 ```
 
+## dump data
+python manage.py dumpdata -o db.json
+
+## load data
+python manage.py loaddata db.json
