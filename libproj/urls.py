@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('library.urls', namespace='library')),
     path('account/', include('django.contrib.auth.urls')),
 
+
 ]
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
