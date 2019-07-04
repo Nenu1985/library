@@ -1,0 +1,59 @@
+[
+
+  {
+    "model": "library.book",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "author": "Antonio Mele",
+      "title": "Django by example",
+      "poster": "books/2019/07/04/PizzaShopDay.jpg",
+      "slug": "django-by-example",
+      "description": "About django",
+      "published_year": 2019,
+      "created": "2019-07-04"
+    }
+  },
+  {
+    "model": "library.book",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "author": "Pizza's man",
+      "title": "Pizza",
+      "poster": "books/2019/07/04/PizzaShopDay_K7s6Ayl.jpg",
+      "slug": "pizza",
+      "description": "About pizza",
+      "published_year": 2019,
+      "created": "2019-07-04"
+    }
+  },
+  {
+    "model": "library.book",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "author": "Kipling",
+      "title": "The jungle book",
+      "poster": "books/2019/07/04/cocross.JPG",
+      "slug": "the-jungle-book",
+      "description": "The advanture book about Maugly",
+      "published_year": 2019,
+      "created": "2019-07-04"
+    }
+  },
+  {
+    "model": "library.book",
+    "pk": 4,
+    "fields": {
+      "user": 3,
+      "author": "Conan Doil",
+      "title": "Sherlok's notes",
+      "poster": "books/2019/07/04/PizzaShopForYou.jpg",
+      "slug": "sherloks-notes",
+      "description": "Detective book",
+      "published_year": 2019,
+      "created": "2019-07-04"
+    }
+  }
+]

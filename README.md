@@ -26,8 +26,10 @@ $ python -m pip install -r requirements.txt
 $ createdb library (postgres db, look at settings.py)
 
 $ python manage.py migrate
-$ python manage.py loaddata db.json
 $ python manage.py test
+
+$ python manage.py loaddata lib.json
+$ python manage.py loaddata users.json
 
 $python manage.py runserver
 ```
