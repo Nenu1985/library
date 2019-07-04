@@ -56,7 +56,7 @@ class LibTest(TestCase):
                                         first_name='fjohn',
                                         last_name='ljohn')
 
-        self.assertEqual(1, User.objects.count())
+        self.assertEqual(john, User.objects.get(id=john.id))
 
         url = reverse('library:user-detail', kwargs={'username': john.username})
 
@@ -72,7 +72,7 @@ class LibTest(TestCase):
             book.save()
             john.books.add(book)
 
-        self.assertEqual(1, john.books.count())
+        self.assertEqual(1, john.books.all().count())
         self.assertEqual(book.slug, 'python-for-kids')
         book = john.books.first()
 
@@ -81,7 +81,7 @@ class LibTest(TestCase):
             'id': book.id,
             'slug': book.slug,
         })
-        self.assertEqual(url, '/books/1/python-for-kids/')
+        self.assertEqual(url, f'/books/{book.id}/python-for-kids/')
 
 
          # Data to update book
